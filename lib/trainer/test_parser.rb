@@ -128,6 +128,7 @@ module Trainer
           target_name: testable_summary["TargetName"],
           test_name: testable_summary["TestName"],
           duration: testable_summary["Tests"].map { |current_test| current_test["Duration"] }.inject(:+),
+          run_destination: run_destination,
           tests: unfold_tests(testable_summary["Tests"]).collect do |current_test|
             test_group, test_name = test_group_and_name(testable_summary, current_test, xcpretty_naming)
             current_row = {
