@@ -5,7 +5,7 @@ module Trainer
         FastlaneCore::ConfigItem.new(key: :path,
                                      short_option: "-p",
                                      env_name: "TRAINER_PATH",
-                                     default_value: ".",
+                                     optional: true,
                                      description: "Path to the directory that should be converted",
                                      verify_block: proc do |value|
                                        v = File.expand_path(value.to_s)
