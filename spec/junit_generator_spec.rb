@@ -12,7 +12,7 @@ describe Trainer do
       expect(tp.to_junit).to eq(junit)
     end
 
-    it "works for a with all tests passing" do
+    it "works for a plist with all tests passing" do
       tp = Trainer::TestParser.new("spec/fixtures/Valid2.plist")
       junit = File.read("spec/fixtures/Valid2.junit")
       expect(tp.to_junit).to eq(junit)
@@ -21,6 +21,10 @@ describe Trainer do
     it "works for a with all tests passing and xcpretty naming" do
       tp = Trainer::TestParser.new("spec/fixtures/Valid2.plist", { xcpretty_naming: true })
       junit = File.read("spec/fixtures/Valid2-x.junit")
+
+    it "works for a plist with multiple test summaries and no run destination" do
+      tp = Trainer::TestParser.new("spec/fixtures/TestSummaries-NoRunDestination.plist")
+      junit = File.read("spec/fixtures/TestSummaries-NoRunDestination.junit")
       expect(tp.to_junit).to eq(junit)
     end
   end
